@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en"
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Student feedback collection and course improvement portal">
+  <title>CampusVoice — Student Feedback</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="CampusVoice home"><span class="brand-mark">CV</span><span>CampusVoice<small>Feedback that moves learning forward</small></span></a>
+    <nav><button class="nav-link" id="nav-dashboard" hidden>Dashboard</button><button class="nav-link" id="nav-feedback" hidden>Give feedback</button><button class="nav-link" id="nav-login">Sign in</button><button class="button button-outline" id="logout-button" hidden>Sign out</button></nav>
+  </header>
+  <main class="shell">
+    <section class="hero" id="hero">
+      <div class="hero-copy"><span class="eyebrow">STUDENT VOICE · BETTER LEARNING</span><h1>Make every class<br><em>count.</em></h1><p>A simple, private space to share thoughtful course feedback and help your faculty improve the learning experience.</p><div class="hero-actions"><button class="button" id="hero-signup">Create student account <span aria-hidden="true">→</span></button><button class="button button-light" id="hero-login">Sign in</button></div><div class="trust-note"><span class="dot"></span> Feedback is shared with authorized faculty administrators.</div></div>
+      <div class="hero-art" aria-hidden="true"><div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div><div class="art-card"><div class="art-card-top"><span>COURSE PULSE</span><span class="live-dot"></span></div><div class="art-stars">★★★★★</div><h3>Your perspective<br>creates progress.</h3><div class="art-bars"><i></i><i></i><i></i><i></i><i></i></div><div class="art-foot"><span>Student voice</span><strong>→ Faculty action</strong></div></div><span class="float-tag tag-a">✦ Honest feedback</span><span class="float-tag tag-b">↗ Better courses</span></div>
+    </section>
+    <section class="auth-panel panel" id="auth-panel" hidden>
+      <div class="panel-heading"><span class="eyebrow" id="auth-eyebrow">WELCOME BACK</span><h2 id="auth-title">Sign in to CampusVoice</h2><p id="auth-description">Access your feedback dashboard.</p></div>
+      <form id="auth-form">
+        <label id="name-label" hidden>Full name<input id="full-name" name="fullName" autocomplete="name" maxlength="100" placeholder="Your full name"></label>
+        <label>Email address<input id="email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@college.edu"></label>
+        <label>Password<input id="password" name="password" type="password" autocomplete="current-password" minlength="8" required placeholder="At least 8 characters"></label>
+        <label id="department-label" hidden>Department <input id="department" name="department" maxlength="100" placeholder="e.g. Computer Science"></label>
+        <button class="button button-full" id="auth-submit" type="submit">Sign in</button>
+      </form>
+      <p class="switch-auth" id="switch-auth">New here? <button class="text-button" id="switch-auth-button">Create a student account</button></p>
+      <p class="form-note">Student accounts can submit feedback. Admin accounts must be created by a trusted administrator using the documented database setup.</p>
+    </section>
+    <section class="dashboard" id="dashboard" hidden>
+      <div class="page-heading"><div><span class="eyebrow" id="dash-eyebrow">YOUR SPACE</span><h1 id="welcome-title">Welcome back</h1><p id="welcome-subtitle">Your feedback helps improve learning.</p></div><button class="button" id="new-feedback-button">＋ Give feedback</button></div>
+      <div class="stats-grid" id="stats-grid"></div>
+      <div class="content-grid">
+        <section class="panel main-panel"><div class="section-heading"><div><span class="eyebrow">ACTIVITY</span><h2 id="list-title">Your feedback</h2></div><select id="status-filter" aria-label="Filter feedback status"><option value="all">All statuses</option><option value="submitted">Submitted</option><option value="reviewed">Reviewed</option><option value="resolved">Resolved</option></select></div><div id="feedback-list" class="feedback-list"><p class="muted">Loading feedback…</p></div></section>
+        <aside class="panel side-panel"><span class="eyebrow">HOW IT WORKS</span><h2>Small insights.<br>Real improvement.</h2><ol class="steps"><li><span>01</span><div><strong>Choose a course</strong><p>Select the subject and faculty you want to review.</p></div></li><li><span>02</span><div><strong>Share honestly</strong><p>Rate the learning experience and add a helpful comment.</p></div></li><li><span>03</span><div><strong>Track progress</strong><p>See when your feedback has been reviewed.</p></div></li></ol><div class="privacy-box"><span>◈</span><p><strong>Respectful by design</strong><br>Keep feedback constructive and avoid sharing sensitive personal details.</p></div></aside>
+      </div>
+    </section>
+    <section class="feedback-panel panel" id="feedback-panel" hidden>
+      <div class="panel-heading"><button class="back-link" id="back-dashboard">← Back to dashboard</button><span class="eyebrow">YOUR VOICE MATTERS</span><h2>Course feedback</h2><p>Share specific, respectful feedback that can help improve teaching and learning.</p></div>
+      <form id="feedback-form">
+        <div class="form-row"><label>Course / subject<input id="course-name" required maxlength="120" placeholder="e.g. Programming Fundamentals"></label><label>Course code <input id="course-code" maxlength="30" placeholder="e.g. CSE101"></label></div>
+        <label>Faculty name<input id="faculty-name" required maxlength="120" placeholder="Name of faculty member"></label>
+        <fieldset class="rating-field"><legend>How would you rate this course? <span class="required">*</span></legend><div class="rating-options"><label><input type="radio" name="rating" value="1" required><span>1</span><small>Poor</small></label><label><input type="radio" name="rating" value="2"><span>2</span><small>Fair</small></label><label><input type="radio" name="rating" value="3"><span>3</span><small>Good</small></label><label><input type="radio" name="rating" value="4"><span>4</span><small>Very good</small></label><label><input type="radio" name="rating" value="5"><span>5</span><small>Excellent</small></label></div></fieldset>
+        <label>Feedback category<select id="category"><option value="teaching">Teaching quality</option><option value="course-content">Course content</option><option value="resources">Learning resources</option><option value="assessment">Assignments & assessment</option><option value="facilities">Classroom & facilities</option><option value="other">Other</option></select></label>
+        <label>Your comments<textarea id="comments" rows="5" required minlength="10" maxlength="2000" placeholder="What worked well? What could be improved? (10–2000 characters)"></textarea><span class="field-hint">Avoid including private information about yourself or others.</span></label>
+        <div class="form-actions"><button class="button" type="submit" id="submit-feedback">Submit feedback <span aria-hidden="true">→</span></button><button class="button button-light" type="button" id="cancel-feedback">Cancel</button></div>
+      </form>
+    </section>
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  </main>
+  <footer><span>© <span id="year"></span> CampusVoice</span><span>Built for better learning experiences.</span></footer>
+</body>
+</html>
+
+

@@ -1,0 +1,1 @@
+Run `npm install` inside backend/ to generate package-lock.json from package.json. Commit the generated lockfile for reproducible installs.
